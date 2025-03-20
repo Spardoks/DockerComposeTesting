@@ -25,7 +25,24 @@ Hey, Netology
 
 ## Решение 1
 
-...
+1. Устанавливаем docker-desktop по инструкции https://docs.docker.com/get-started/introduction/get-docker-desktop/
+2. Регистрируемся на https://hub.docker.com
+3. Загружаем образ nginx
+   1. docker pull nginx:1.21.1
+4. Создаём файл index.html с нужным содержимым
+5. Создаём Dockerfile
+   1. FROM nginx:1.21.1
+   2. COPY index.html /usr/share/nginx/html/
+6. Собираем образ
+   1. docker build -t custom-nginx:1.0.0 .
+7. Готовим креды для логина, получая их на https://hub.docker.com
+8. docker login -u spardoks
+9. Готовим образ для отправки
+   1. docker tag custom-nginx:1.0.0 spardoks/custom-nginx:1.0.0
+10. Отправляем
+    1.  docker push spardoks/custom-nginx:1.0.0
+
+https://hub.docker.com/repository/docker/spardoks/custom-nginx
 
 ## Задача 2
 1. Запустите ваш образ custom-nginx:1.0.0 командой docker run в соответвии с требованиями:
